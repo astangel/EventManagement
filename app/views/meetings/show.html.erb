@@ -1,0 +1,40 @@
+<div id="bodyRightPan">
+	<div class="bodyRightPanBlock">
+      <h2>Venue:</h2>
+      <p><%= link_to @meeting.venue.name, @meeting.venue %><br />
+      <%= @meeting.venue.address %><br />
+      <%= @meeting.venue.city %>, <%= @meeting.venue.state %>&nbsp;&nbsp;<%= @meeting.venue.zip %>
+      </p>
+	</div>
+	<div class="bodyRightPanBlock" style="margin-top:2.5em;">
+      <h2>Sponsors:</h2>
+        <ul>
+        <% @meeting.exhibitors.each do |c| %>
+          <%= link_to c.name, c %><br />
+        <% end %>
+        </ul>
+	</div>
+</div>
+<h1>Meeting Details</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @meeting.name %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @meeting.start_date %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%= @meeting.end_time %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>

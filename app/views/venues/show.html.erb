@@ -1,0 +1,42 @@
+<div id="bodyRightPan">
+	<div class="bodyRightPanBlock">
+      <h2>Meetings:</h2>
+  	    <ul>
+  	      <% @venue.meetings.each do |c| %>
+  	        <li><%= link_to c.name, c %></li>
+          <%end%>	
+  	    </ul>
+	</div>
+</div>
+<h1>Venue Details</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @venue.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @venue.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @venue.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @venue.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @venue.zip %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_venue_path(@venue) %> |
+<%= link_to 'Back', venues_path %>

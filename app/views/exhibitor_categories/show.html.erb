@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>   <%= @exhibitor_category.name %><br />
+  <div style="margin:0px 0px 0px 1em; padding:.25em .25em .25em .5em; border: 1px solid #999;">
+
+  <% @exhibitor_category.exhibitors.each do |c| %>
+    <%= link_to c.name, c %><br />
+  <%end%>
+  </div>
+</p>
+
+
+<%= link_to 'Edit', edit_exhibitor_category_path(@exhibitor_category) %> |
+<%= link_to 'Back', exhibitor_categories_path %>

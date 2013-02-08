@@ -1,0 +1,29 @@
+<h1>Listing exhibitor_categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exhibitor_categories.each do |exhibitor_category| %>
+  <tr>
+    <td><%= exhibitor_category.name %>
+    	<div style='padding-left:.5em; margin:0px; width:100%;'>
+    	<% exhibitor_category.exhibitors.each do |c| %>
+    	  <%= raw("<li>"+c.name+"</li>")%>
+    	<%end%>
+    	</div>
+    </td>
+    <td><%= link_to 'Show', exhibitor_category %></td>
+    <td><%= link_to 'Edit', edit_exhibitor_category_path(exhibitor_category) %></td>
+    <td><%= link_to 'Destroy', exhibitor_category, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Exhibitor category', new_exhibitor_category_path %>

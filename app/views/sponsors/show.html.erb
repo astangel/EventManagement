@@ -1,0 +1,35 @@
+<div id="bodyRightPan">
+	<div class="bodyRightPanBlock" style="margin-top:2.5em;">
+      <h2>Meetings:</h2>
+        <% @sponsor.meetings.each do |c| %>
+          <div style="overflow:hidden; padding:0px 1em 1.2em;">
+          	<div style="width:100%; border-bottom:1px solid #999;"><%= link_to c.name, c %></div>
+          	<div style="float:right;">
+          		<div style="float:left;"><center><%=c.start_date.strftime("%m/%d/%Y")%><br /><%=c.start_date.strftime("%I:%M %p")%></center></div>
+          		<div style="float:left; padding:0px .75em; vertical-align: middle; line-height: 3em;">&mdash;</div>
+          		<div style="float:left;"><center><%=c.end_time.strftime("%m/%d/%Y")%><br /><%=c.end_time.strftime("%I:%M %p")%></center></div>
+          	</div></div>
+        <% end %>
+	</div>
+</div>
+<h1>Sponsor Details</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Exhibitor</b>
+  <%= @sponsor.exhibitor.name %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @sponsor.url %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @sponsor.logo %>
+</p>
+
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>

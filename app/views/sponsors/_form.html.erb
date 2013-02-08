@@ -1,0 +1,33 @@
+<%= form_for(@sponsor) do |f| %>
+  <% if @sponsor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
+
+      <ul>
+      <% @sponsor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :logo %><br />
+    <%= f.text_field :logo %>
+  </div>
+  <div class="field">
+    <%= f.label "Meetings" %><br />
+    <% for meeting in Meeting.all %>
+      <%= check_box_tag 'meeting[meeting_ids][]', meeting.id, 
+      @sponsor.meeting_ids.include?(meeting.id), :id => dom_id(meeting) %>
+      <%= label_tag dom_id(meeting), meeting.name, :class => "check_box_label" %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

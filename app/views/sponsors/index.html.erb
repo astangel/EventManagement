@@ -1,0 +1,32 @@
+<h1>Listing sponsors</h1>
+
+<table>
+  <tr>
+  	<th>Exhibitor</th>
+    <th>Url</th>
+    <th>Logo</th>
+    <th>Meetings</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sponsors.each do |sponsor| %>
+  <tr>
+    <td><%= sponsor.exhibitor.name %></td>
+    <td><%= sponsor.url %></td>
+    <td><%= sponsor.logo %></td>
+    <td><% for meeting in sponsor.meetings %>
+      <%= raw( meeting.name + "<br />") %>
+    <% end %>
+    </td>
+    <td><%= link_to 'Show', sponsor %></td>
+    <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
+    <td><%= link_to 'Destroy', sponsor, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sponsor', new_sponsor_path %>
